@@ -1,5 +1,5 @@
 const checkAir = function (samples, threshold) {
-  let air = 'clean'
+  let air = 'Clean'
   let howDirty = []
   // my variables 
   let percent = samples.length * threshold
@@ -11,7 +11,7 @@ const checkAir = function (samples, threshold) {
     }
   }
   if (howDirty.length > percent){
-    air = 'dirty'
+    air = 'Polluted'
   // changing the result of air if the number of dirty's is higher then the threshold amount
   }
   return air
