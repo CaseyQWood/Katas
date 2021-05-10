@@ -1,30 +1,50 @@
+// const whereCanIPark = function (spots, vehicle) {
+//   let result = false 
+//   if (vehicle === 'regular'){
+//     for(let i = 0; i < spots.length; i++){
+//       let row = spots[i]
+//       for(let x = 0; x < row.length; x++){
+//         if(row[x] === 'R'){
+//           result = [x, i]
+//         }
+//       }
+//     }
+//   }
+//   else if(vehicle === 'small'){
+//     for(let i = 0; i < spots.length; i++){
+//       let row = spots[i]
+//       for(let x = 0; x < row.length; x++){
+//         if(row[x] === 'R' || row[x] === 'S'){
+//           result = [x, i]
+//         }
+//       }
+//     }
+//   }
+//   else if(vehicle === 'motorcycle'){
+//     for(let i = 0; i < spots.length; i++){
+//       let row = spots[i]
+//       for(let x = 0; x < row.length; x++){
+//         if(row[x] === 'R' || row[x] === 'S' || row[x] === 'M'){
+//           result = [x, i]
+//         }
+//       }
+//     }
+//   }
+//   return result
+// };
+
 const whereCanIPark = function (spots, vehicle) {
   let result = false 
-  if (vehicle === 'regular'){
-    for(let i = 0; i < spots.length; i++){
-      let row = spots[i]
-      for(let x = 0; x < row.length; x++){
-        if(row[x] === 'R'){
-          result = [x, i]
-        }
-      }
-    }
+  let obj = {
+    regular : ["R"],
+    small: ["R", "S"],
+    motorcycle: ["R,","S", "M"],
   }
-  else if(vehicle === 'small'){
+  if (Object.keys(obj).includes(vehicle)){
     for(let i = 0; i < spots.length; i++){
       let row = spots[i]
       for(let x = 0; x < row.length; x++){
-        if(row[x] === 'R' || row[x] === 'S'){
-          result = [x, i]
-        }
-      }
-    }
-  }
-  else if(vehicle === 'motorcycle'){
-    for(let i = 0; i < spots.length; i++){
-      let row = spots[i]
-      for(let x = 0; x < row.length; x++){
-        if(row[x] === 'R' || row[x] === 'S' || row[x] === 'M'){
+        if(obj[vehicle].includes(row[x])){
           result = [x, i]
         }
       }
@@ -59,6 +79,18 @@ const whereCanIPark = function (spots, vehicle) {
   ));
   
   console.log(whereCanIPark(
+    [
+      ['s', 's', 's', 's', 's', 's'],
+      ['s', 'm', 's', 'S', 'r', 's'],
+      ['s', 'm', 's', 'S', 'r', 's'],
+      ['S', 'r', 's', 'm', 'r', 's'],
+      ['S', 'r', 's', 'm', 'R', 's'],
+      ['S', 'r', 'S', 'M', 'm', 'S']
+    ],
+    'motorcycle'
+  ))
+
+    console.log(whereCanIPark(
     [
       ['s', 's', 's', 's', 's', 's'],
       ['s', 'm', 's', 'S', 'r', 's'],
