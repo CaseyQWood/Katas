@@ -33,7 +33,7 @@ const calculateChange = function(total, cash) {
 return changeOwed
 };
 
-console.log(calculateChange(1787, 2000));// 213
+console.log(calculateChange(1787, 2000));
 console.log(calculateChange(2623, 4000));
 console.log(calculateChange(501, 1000));
 
